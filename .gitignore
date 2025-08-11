@@ -1,0 +1,6 @@
+
+# ignore file of prettier
+.prettierignore
+
+# original image folder
+assets/images/original

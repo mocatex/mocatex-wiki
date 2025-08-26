@@ -17,7 +17,7 @@ A uv project typically consists of the following uv-specific files and directori
 
 ### 1.2 Installation and Setup
 
-YOu can use brew to install uv:
+You can use brew to install uv:
 
 ```bash
 brew install uv
@@ -54,6 +54,7 @@ You can either use the fast and convenient command:
 ```bash
 uv run your_file.py
 ```
+
 Here uv will automatically activate and then deactivate the virtual environment for you.
 
 or you can activate the virtual environment manually:

@@ -1,0 +1,5 @@
+# docs/getting-started/.pages
+
+nav:
+  - How to document: how-to-write.md
+  - tags.md

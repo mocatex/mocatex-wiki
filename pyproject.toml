@@ -1,0 +1,12 @@
+[project]
+name = "my-doc"
+version = "0.1.0"
+description = "A Place where I write down stuff I learn"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mkdocs-awesome-pages-plugin>=2.10.1",
+    "mkdocs-material>=9.6.18",
+    "mkdocs-section-index>=0.3.10",
+    "pymdown-extensions>=10.16.1",
+]

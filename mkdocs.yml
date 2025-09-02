@@ -1,0 +1,67 @@
+site_name: "My Knowledge Base"
+site_url: "https://example.com" # yet to be replaced!
+site_author: "Moritz"
+repo_url: "https://github.com/mocatex/my-doc"
+repo_name: "mocatext/my-doc"
+copyright: "2025, Moritz"
+
+theme:
+  name: material
+  features:
+    - navigation.instant # Enable instant loading of pages
+    - navigation.instant.prefetch # Prefetch pages on hover
+    - navigation.instant.progress # Show a progress bar when loading pages
+    - navigation.path # add breadcrumb navigation
+    - navigation.tabs # tabbed navigation for top-level pages
+    #- navigation.sections # group top-level but stay nested for mobile
+    - navigation.expand # expand navigation sections by default
+    - search.suggest # enable search suggestions
+    - search.highlight # highlight search terms on the page
+    - search.share # share search results via URL
+    - content.code.copy # enable copy button on code blocks
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default # light mode
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate # dark mode
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-3
+        name: Switch to light mode
+
+  language: en
+
+plugins:
+  - search # built in client-side search
+  - awesome-pages # auto or custom navigation
+  - section-index # allow index.md to act as section landing page
+  - tags # tag support
+  - meta # read metadata from .meta.yml files for tags/authors/etc for an entire directory
+
+markdown_extensions:
+  - admonition # enables !!! note/tip/warning/etc. callouts
+  - toc:
+      permalink: true # adds a link icon to each heading in the TOC
+  - pymdownx.blocks.details # enables <details> blocks
+  - pymdownx.superfences # better code block handling
+  - pymdownx.magiclink # auto-link URLs and emails
+  - attr_list # allow setting attributes on elements via {#id .class key=val}
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji ""
+      emoji_generator:
+
+        !!python/name:pymdownx.emoji.to_svg ""
+extra:
+  socials: []
+
+extra_css:
+  - assets/styles/overrides.css
+
+extra_javascript: []

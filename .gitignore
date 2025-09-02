@@ -1,1 +1,6 @@
 
+# uv specific files
+.python-version
+
+# builded site
+/site

@@ -1,6 +1,6 @@
-# <center>Pre-Commit Framework</center>
+# Pre-Commit Framework
 
-<img src="../../../assets/images/tooling/pre-commit-logo.jpg" alt="pre-commit-logo" width="60%" style="display: block; margin: auto">
+![pre-commit-logo](../../assets/images/tooling/pre-commit-logo.jpg)
 
 !!! tldr
     Pre-commit is a framework for managing and maintaining multi-language pre-commit [git-hooks](../git/git-hooks.md) 

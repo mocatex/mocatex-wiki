@@ -1,20 +1,4 @@
-# <center>Bash Overview</center>
-
-- [Bash Overview](#bash-overview)
-  - [1. General Structure of a Bash Script](#1-general-structure-of-a-bash-script)
-  - [2. Bash Crash Course](#2-bash-crash-course)
-    - [2.1 printing to the console](#21-printing-to-the-console)
-    - [2.2 Variables](#22-variables)
-      - [2.2.1 Environment Variables](#221-environment-variables)
-        - [Predefined Environment Variables](#predefined-environment-variables)
-        - [Defining custom Environment Variables](#defining-custom-environment-variables)
-      - [2.2.2 Special/Positional Variables](#222-specialpositional-variables)
-    - [2.3 Math Operations](#23-math-operations)
-    - [2.4 Conditional Statements](#24-conditional-statements)
-      - [2.4.1 Basic Structure](#241-basic-structure)
-      - [2.4.2 Arithmetic Comparisons](#242-arithmetic-comparisons)
-      - [2.4.3 Test comparisons](#243-test-comparisons)
-
+# Bash Overview
 
 !!! info
     BASH (Bourne Again SHell) is a command-line interpreter that is widely used in Linux and macOS systems. It allows users to execute commands, run scripts, and automate tasks.

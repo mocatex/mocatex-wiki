@@ -1,4 +1,4 @@
-# <center>Save your bash/zsh script for system-wide use</center>
+# Set scripts for system wide use
 
 With the follwowing steps you can setup a location where you can store all you bash scripts and then use them from everywhere in your system via the terminal.
 The steps can be used for macOS and Linux systems.

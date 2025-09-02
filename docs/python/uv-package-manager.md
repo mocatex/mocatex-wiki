@@ -1,6 +1,6 @@
-# <center>uv package manager</center>
+# uv package manager
 
-<img src="../../assets/images/python/uv-logo.jpg" alt="uv-logo" width="50%" style="display: block; margin: auto">
+![uv-logo](../assets/images/python/uv-logo.jpg)
 
 > uv is a modern and fast package manager for Python projects, designed to simplify dependency management and project setup.
 
@@ -14,6 +14,8 @@ A uv project typically consists of the following uv-specific files and directori
 - `.python-version`: specifies the Python version to be used for the project.
 - `uv.lock`: locks the exact versions of the dependencies to ensure reproducible builds. (get auto-generated when you install dependencies)
 - `.venv/`: a directory that contains the virtual environment for the project. (get auto-generated when you install dependencies)
+
+Both the `uv.lock` and the `pyproject.toml` files should be committed to version control to ensure consistency across different environments.
 
 ### 1.2 Installation and Setup
 

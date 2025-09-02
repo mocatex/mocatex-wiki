@@ -1,1 +1,1 @@
-# this site is under construction. Please come back later.
+# This site is currently under construction

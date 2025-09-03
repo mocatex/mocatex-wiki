@@ -1,7 +1,3 @@
-:root {
-    --indent-base: 0.4rem;
-}
-
 /* Prevent code blocks from breaking inside words */
 .md-typeset code {
     word-break: normal; /* don't break inside words */
@@ -18,30 +14,6 @@ img.center {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* Adjust the max-width of the main content area */
-.md-grid {
-    max-width: 90%;
-}
-
-/* Adjust the width of the primary sidebar -> navigation */
-.md-sidebar--primary {
-    width: 25%;
-    margin-right: 0em;
-}
-
-/* Indent navigation items based on their level */
-.md-nav [data-md-level="1"] {
-    margin-left: calc(var(--indent-base) * 1) !important;
-}
-
-.md-nav [data-md-level="2"] {
-    margin-left: calc(var(--indent-base) * 2) !important;
-}
-
-.md-nav [data-md-level="3"] {
-    margin-left: calc(var(--indent-base) * 3) !important;
 }
 
 /* Adjust the width of the secondary sidebar -> table of contents */

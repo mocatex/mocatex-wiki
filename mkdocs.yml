@@ -13,7 +13,6 @@ theme:
     - navigation.instant.progress # Show a progress bar when loading pages
     - navigation.path # add breadcrumb navigation
     - navigation.tabs # tabbed navigation for top-level pages
-    #- navigation.sections # group top-level but stay nested for mobile
     - navigation.expand # expand navigation sections by default
     - search.suggest # enable search suggestions
     - search.highlight # highlight search terms on the page
@@ -55,9 +54,7 @@ markdown_extensions:
   - attr_list # allow setting attributes on elements via {#id .class key=val}
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji ""
-      emoji_generator:
-
-        !!python/name:pymdownx.emoji.to_svg ""
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg ""
 extra:
   socials: []
 

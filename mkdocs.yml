@@ -13,6 +13,9 @@ theme:
     - navigation.instant.progress # Show a progress bar when loading pages
     - navigation.path # add breadcrumb navigation
     - navigation.tabs # tabbed navigation for top-level pages
+    - navigation.tabs.sticky # make the tab navigation sticky
+    - navigation.path # add breadcrumb navigation
+    - navigation.top # add a `Back to top` button
     - navigation.expand # expand navigation sections by default
     - search.suggest # enable search suggestions
     - search.highlight # highlight search terms on the page

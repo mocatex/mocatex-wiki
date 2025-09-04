@@ -1,7 +1,7 @@
 [project]
-name = "my-doc"
+name = "mocatex-wiki"
 version = "0.1.0"
-description = "A Place where I write down stuff I learn"
+description = "Personal wiki for stuff I learn"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

@@ -1,8 +1,8 @@
-site_name: "My Knowledge Base"
+site_name: "mocatex Wiki"
 site_url: "https://example.com" # yet to be replaced!
 site_author: "Moritz"
-repo_url: "https://github.com/mocatex/my-doc"
-repo_name: "mocatext/my-doc"
+repo_url: "https://github.com/mocatex/mocatex-wiki"
+repo_name: "mocatex-wiki"
 copyright: "2025, Moritz"
 
 theme:

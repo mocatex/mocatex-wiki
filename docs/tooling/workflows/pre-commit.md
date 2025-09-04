@@ -3,7 +3,7 @@
 ![pre-commit-logo](../../assets/images/tooling/pre-commit-logo.jpg)
 
 !!! tldr
-    Pre-commit is a framework for managing and maintaining multi-language pre-commit [git-hooks](../git/git-hooks.md) 
+    Pre-commit is a framework for managing and maintaining multi-language pre-commit [git-hooks](../../git/git-hooks.md) 
     It allows you to run checks on your code before committing it to your version control system.
 
 ## 1. Install pre-commit

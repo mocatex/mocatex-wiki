@@ -88,6 +88,9 @@ More info about the different colors and icons can be found [here](https://squid
 | **`navigation.instant.progress`** | Displays a progress bar at the top of the page during navigation.        |
 | **`navigation.path`**             | Adds Breadcrumb Navigation to the top of each page.                      |
 | **`navigation.tabs`**             | Adds tabbed navigation for top-level pages.                              |
+| **`navigation.tabs.sticky`**      | Makes the tab navigation sticky at the top of the viewport.              |
+| **`navigation.path`**             | Adds breadcrumb navigation to the top of each page.                      |
+| **`navigation.top`**              | Adds a `Back to top` button when scrolling up.                           |
 | **`navitgation.sections`**        | Groups navigation items but keep nested on mobile                        |
 | **`navigation.expand`**           | Expand all navigation sections by default                                |
 | **`search.suggest`**              | Provides search suggestions as you type in the search box.               |
@@ -185,4 +188,57 @@ uv run mkdocs build --strict
 
 ### Step 1: Create a pages.yaml workflow
 
+Create a new file at `.github/workflows/pages.yaml`.
+This workflow will automatically build and deploy your site to GitHub Pages whenever you push changes to the `main` branch.
 
+Here is a example workflow:
+It uses GutHub Artifacts to store the built site and then deploys it using the `actions/deploy-pages` action.
+
+An old method would be to use a gh-pages branch, but this is now not recommended anymore.
+
+```yaml
+name: Build & Deploy MkDocs
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install mkdocs-material pymdown-extensions mkdocs-awesome-pages-plugin mkdocs-section-index
+      - run: mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+```
+
+!!! attention Important
+    - Make sure to activate GitHub Pages in the settings of your repository and set the source to "GitHub Actions".
+    - Set it to deploy from a github action workflow and *not* from a branch.
+
+Now you can add, change or delete markdown/yaml files and push them to your `main` branch.
+
+Happy documenting! :tada:

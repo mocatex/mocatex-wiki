@@ -223,11 +223,11 @@ Relative units are based on other measurements, such as the size of the parent e
 
     >If the parent has no specified font size, it inherits from its parent, and so on, until it reaches the root element (usually the `<html>` element).
 
-!!! info inline end "Important"
-    Use `rem` over `em` for more predictable sizing, especially for nested elements.
-    
 - `rem`: Relative to the font size of the **root element** (usually the `<html>` element). For example, `1.5rem` is 1.5 times the root element's font size.
 This is often more predictable than `em`, especially for nested elements.
+!!! info "Important"
+    Use `rem` over `em` for more predictable sizing, especially for nested elements.
+
 - `%`: Relative to the parent element's size. -> `50%` width means half the width of the parent element.
 - `vw` (viewport width): Relative to 1% of the width of the viewport (browser window). -> `10vw` is 10% of the viewport width.
 - `vh` (viewport height): Relative to 1% of the height of the viewport. -> `10vh` is 10% of the viewport height.

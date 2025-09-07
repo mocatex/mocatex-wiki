@@ -1,5 +1,7 @@
 # CSS - The Basics
 
+![CSS Logo](../../assets/images/web-dev/css-logo.png){width=20% .center}
+
 > CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of a document written in HTML or XML. It controls the layout, colors, fonts, and overall visual appearance of web pages.
 
 ## How to inlcude CSS in HTML
@@ -203,6 +205,16 @@ p {
 }
 ```
 
+### font-family
+
+The `font-family` property specifies the font(s) to be used for text.
+
+```css
+p {
+    font-family: Arial, sans-serif; /* Uses Arial, falls back to any sans-serif font */
+}
+```
+
 ## CSS Units
 
 CSS supports various units for specifying sizes, lengths, and other measurements.
@@ -238,4 +250,4 @@ This is often more predictable than `em`, especially for nested elements.
     - Use `px` for precise control over element sizes.
     - Use `em` and `rem` for scalable typography and spacing.
     - Use `%`, `vw`, and `vh` for responsive layouts that adapt to different screen sizes.
-  
+

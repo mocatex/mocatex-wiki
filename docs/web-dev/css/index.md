@@ -28,7 +28,7 @@ There are three main ways to include CSS in an HTML document:
 
 3. :white_check_mark: **External CSS**: Linking to external CSS file(s) using the `<link>` tag within the `<head>` section. -> Best practice
 
-   ```html
+    ```html
     <head>
          <link rel="stylesheet" href="styles.css">
     </head>
@@ -110,6 +110,20 @@ color: #FF000080; /* Semi-transparent Red */
     RGB(A) and HEX(A) are actually the same.
     In HEX(A) the values are just represented in hexadecimal format.
     -> 255 = FF, 0 = 00, 128 = 80, ...
+
+#### Shorthand HEX
+
+If each pair of digits in a HEX color are the same, you can shorten it to three digits.
+
+```css
+color: #FF3399; /* Full HEX */
+color: #F39;    /* Shorthand HEX */
+color: #F39A;   /* Shorthand HEX with alpha */
+```
+
+!!! warning "Important"
+    The shorthand HEX(A) Format only if each pair of digits are the same!
+    Even if a single pair is different, you must use the full six/eight-digit format.
 
 ## Common Text Properties
 
@@ -225,24 +239,30 @@ There are two main categories: absolute and relative units.
 Absolute units are fixed and do not change based on other elements or the viewport size.
 
 - `px` (pixels): A pixel is a single dot on the screen. It is the most commonly used absolute unit.
-- `cm` (centimeters): A centimeter is a metric unit of length. (same for `mm`, `in`, `pt`, `pc`) -> rarely used
+- `cm` (centimeters): A centimeter is a metric unit of length. (same for `mm`, `in`, `pt`, `pc`) <br>
+-> rarely used
 
 ### Relative Units
 
 Relative units are based on other measurements, such as the size of the parent element or the viewport.
 
-- `em`: Relative to the font size of the **parent element**. For example, `2em` is twice the size of the parent element's font size.
+- `em`: Relative to the font size of the **parent element**. <br>
+-> `2em` is twice the size of the parent element's font size.
 
     >If the parent has no specified font size, it inherits from its parent, and so on, until it reaches the root element (usually the `<html>` element).
 
-- `rem`: Relative to the font size of the **root element** (usually the `<html>` element). For example, `1.5rem` is 1.5 times the root element's font size.
+- `rem`: Relative to the font size of the **root element** (usually the `<html>` element). <br>
+-> `1.5rem` is 1.5 times the root element's font size.
 This is often more predictable than `em`, especially for nested elements.
 !!! info "Important"
     Use `rem` over `em` for more predictable sizing, especially for nested elements.
 
-- `%`: Relative to the parent element's size. -> `50%` width means half the width of the parent element.
-- `vw` (viewport width): Relative to 1% of the width of the viewport (browser window). -> `10vw` is 10% of the viewport width.
-- `vh` (viewport height): Relative to 1% of the height of the viewport. -> `10vh` is 10% of the viewport height.
+- `%`: Relative to the parent element's size. <br>
+-> `50%` width means half the width of the parent element.
+- `vw` (viewport width): Relative to 1% of the width of the viewport (browser window). <br>
+-> `10vw` is 10% of the viewport width.
+- `vh` (viewport height): Relative to 1% of the height of the viewport. <br>
+-> `10vh` is 10% of the viewport height.
 - `vmin`: Relative to 1% of the smaller dimension of the viewport (width or height).
 - `vmax`: Relative to 1% of the larger dimension of the viewport (width or height).
 

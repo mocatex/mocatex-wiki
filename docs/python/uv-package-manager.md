@@ -49,6 +49,12 @@ This will update the `pyproject.toml` and `uv.lock` files accordingly.
     - You can also add it manually to the `pyproject.toml` file.
     - If you want to lock/sync manually, you can run `uv lock` or `uv sync` to manually update the `uv.lock` file or sync the virtual environment with the `pyproject.toml` file.
 
+You can also add dependencies from a `requirements.txt` file using:
+
+```bash
+uv add -r requirements.txt
+```
+
 ### 1.4 Activating the Virtual Environment
 
 You can either use the fast and convenient command:

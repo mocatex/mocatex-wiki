@@ -20,3 +20,15 @@ img.center {
 .md-sidebar--secondary {
     width: 22%;
 }
+
+/* make h2 underlined */
+.md-typeset h2 {
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 0.3em;
+}
+
+/* make h3 italic and bigger */
+.md-typeset h3 {
+    font-style: italic;
+    font-size: 1.4em;
+}

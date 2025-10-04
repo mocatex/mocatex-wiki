@@ -6,6 +6,18 @@
 > It leverages web standards such as SVG, HTML, and CSS to bring data to life.
 > The main advantage of D3.js is its ability to bind data to the Document Object Model (DOM) and apply data-driven transformations to the document.
 
+## Installation
+
+```bash
+npm install d3
+```
+
+Then, you can import D3.js in your JavaScript files:
+
+```javascript
+import * as d3 from "d3";
+```
+
 ## Basic Concepts
 
 ### Selections

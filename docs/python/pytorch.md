@@ -113,7 +113,7 @@ print(x.grad)  # Gradient of out with respect to x
 > The value in `x.grad` mean: if x[i] increases by t then out increases by x.grad[i] * t.
 > If you want to stop tracking history on a tensor, you can use `with torch.no_grad():` or `tensor.detach()`.
 
-## 2. Vanilla Neural Networs
+## 2. Vanilla Neural Networks
 
 To build a neural network in PyTorch, you typically follow these steps:
 
@@ -206,11 +206,35 @@ dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
     - `pin_memory`: will copy Tensors into CUDA pinned memory before returning. (use it when using Nvidia GPU)
     - `drop_last`: If `True`, the last incomplete batch will be dropped. (use it for training set!)
 
-### 2.3 Loss Functions
+### 2.3. Activation Functions
+
+The activation functions introduce non-linearity into the neural network, allowing it to learn complex patterns. PyTorch provides several activation functions in the `torch.nn` module.
+
+#### 2.3.1 ReLU (Rectified Linear Unit)
+
+### 2.4 Loss Functions
+
+Loss functions measure **how wrong** a model’s predictions are compared to the true labels.
+They tell the optimizer *how much and in which direction to adjust the weights*.
+
+Conceptual Calculation of Loss over a batch:
+
+$$
+\text{Loss} = \frac{1}{N} \sum_{i=1}^{N} \text{error}(y_i, \hat{y}_i)
+$$
+
+where
+
+- $y_i$ = true value
+- $\hat{y}_i$ = predicted value
+- `error()` = some function that gets **larger when prediction is worse** (e.g. squared difference, log loss, etc.)
+- $N$ = number of samples in the batch
+
+The optimizer then tries to **minimize** this loss.
 
 PyTorch provides various loss functions in the `torch.nn` module.
 
-#### Binary Cross Entropy Loss
+#### 2.4.1 Binary Cross Entropy Loss
 
 Used for binary classification tasks.
 So the model output should be in the range [0, 1] (use Sigmoid activation).
@@ -228,7 +252,7 @@ criterion = nn.BCEWithLogitsLoss()
 
 #### More Loss Functions are following...
 
-### 2.4 Optimizers
+### 2.5 Optimizers
 
 Optimizer have theese main functions:
 
@@ -238,7 +262,7 @@ Optimizer have theese main functions:
 
 PyTorch provides various optimization algorithms in the `torch.optim` module.
 
-#### Stochastic Gradient Descent (SGD)
+#### 2.5.1 Stochastic Gradient Descent (SGD)
 
 Updates the parameters using the gradient of the loss function.
 
@@ -257,7 +281,7 @@ optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-
     - `momentum`: 0.9
     - `weight_decay`: 1e-4 to 1e-3
 
-### 2.5 Training Loop
+### 2.6 Training Loop
 
 A typical training loop in PyTorch involves iterating over the data, performing forward and backward passes, and updating the model parameters.
 
@@ -276,7 +300,7 @@ def train_model(model, dataloader, criterion, optimizer, num_epochs, device):
         print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
 ```
 
-### 2.6 Saving and Loading Models
+### 2.7 Saving and Loading Models
 
 You can save and load model weights using `torch.save()` and `torch.load()`.
 
@@ -292,7 +316,7 @@ model.eval()  # Set the model to evaluation mode
 
 > You can theoretically use any file extension, but `.pth` or `.pt` are commonly used for PyTorch models.
 
-### 2.7 Evaluation
+### 2.8 Evaluation
 
 To evaluate the model, you typically switch to evaluation mode and disable gradient computation.
 

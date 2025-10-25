@@ -192,4 +192,3 @@ D3.js has a wide range of predefined layouts and shapes that you can use to crea
 - Hierarchical layouts: `d3.hierarchy()`, `d3.tree()`, `d3.cluster()`
 - Maps: `d3.geoPath()`, `d3.geoProjection()`
 - ...
-

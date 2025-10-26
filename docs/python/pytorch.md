@@ -202,6 +202,7 @@ dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
 
 !!! info
     The most important parameters of `DataLoader` are:
+    
     - `batch_size`: Number of samples per batch.
     - `shuffle`: Whether to shuffle the data at every epoch. (use it for training set!)
     - `num_workers`: Number of subprocesses to use for data loading. (Use ~ number of CPU cores)

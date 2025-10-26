@@ -44,7 +44,6 @@ plugins:
   - search # built in client-side search
   - awesome-pages # auto or custom navigation
   - section-index # allow index.md to act as section landing page
-  - plotly # plotly chart support
   - tags # tag support
   - meta # read metadata from .meta.yml files for tags/authors/etc for an entire directory
 

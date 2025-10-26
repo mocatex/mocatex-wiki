@@ -21,6 +21,11 @@ img.center {
     width: 22%;
 }
 
+/* make content area wider */
+.md-main__inner.md-grid {
+    max-width: 71rem;
+}
+
 /* make h2 underlined */
 .md-typeset h2 {
     border-bottom: 2px solid #eaeaea;
@@ -31,4 +36,9 @@ img.center {
 .md-typeset h3 {
     font-style: italic;
     font-size: 1.4em;
+}
+
+/* make h4 bigger */
+.md-typeset h4 {
+    font-size: 1.15em;
 }

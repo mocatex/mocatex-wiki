@@ -54,6 +54,9 @@ markdown_extensions:
   - pymdownx.blocks.details # enables <details> blocks
   - pymdownx.superfences # better code block handling
   - pymdownx.magiclink # auto-link URLs and emails
+  - pymdownx.arithmatex:
+      # math support
+      generic: true
   - attr_list # allow setting attributes on elements via {#id .class key=val}
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji ""
@@ -63,5 +66,9 @@ extra:
 
 extra_css:
   - assets/styles/overrides.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
 
-extra_javascript: []
+extra_javascript:
+  - assets/javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js

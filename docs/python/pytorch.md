@@ -23,8 +23,6 @@ import torch.optim as optim     # Optimization algorithms
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
-    
-    model.to(device)
     ```
 
 - fixed random seed for reproducibility
@@ -152,6 +150,10 @@ class SimpleNN(nn.Module):
 
 > a Layer is built: `nn.Linear(in_features, out_features)`
 
+Here we used the [ReLU](#relu-activation) activation function between the two fully connected layers.
+The output of a neuron is typically passed through an activation function to introduce non-linearity.
+More activation functions can be found in the [Activation Functions](#31-activation-functions) section.
+
 We then create an instance of the model and move it to the appropriate device (CPU or GPU).
 
 ```py
@@ -206,80 +208,27 @@ dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
     - `pin_memory`: will copy Tensors into CUDA pinned memory before returning. (use it when using Nvidia GPU)
     - `drop_last`: If `True`, the last incomplete batch will be dropped. (use it for training set!)
 
-### 2.3. Activation Functions
+### 2.3 Loss Function
 
-The activation functions introduce non-linearity into the neural network, allowing it to learn complex patterns. PyTorch provides several activation functions in the `torch.nn` module.
-
-#### 2.3.1 ReLU (Rectified Linear Unit)
-
-### 2.4 Loss Functions
-
-Loss functions measure **how wrong** a model’s predictions are compared to the true labels.
-They tell the optimizer *how much and in which direction to adjust the weights*.
-
-Conceptual Calculation of Loss over a batch:
-
-$$
-\text{Loss} = \frac{1}{N} \sum_{i=1}^{N} \text{error}(y_i, \hat{y}_i)
-$$
-
-where
-
-- $y_i$ = true value
-- $\hat{y}_i$ = predicted value
-- `error()` = some function that gets **larger when prediction is worse** (e.g. squared difference, log loss, etc.)
-- $N$ = number of samples in the batch
-
-The optimizer then tries to **minimize** this loss.
-
-PyTorch provides various loss functions in the `torch.nn` module.
-
-#### 2.4.1 Binary Cross Entropy Loss
-
-Used for binary classification tasks.
-So the model output should be in the range [0, 1] (use Sigmoid activation).
+We need to define a loss function to measure how well the model is performing.
 
 ```py
-criterion = nn.BCELoss()
-# or for logits (more stable)
-criterion = nn.BCEWithLogitsLoss()
+criterion = nn.BCEWithLogitsLoss()  # Binary Cross Entropy Loss with logits
 ```
 
-> BCEWithLogitsLoss = Sigmoid + BCELoss
-> It is advised to always prefer BCEWithLogitsLoss over BCELoss for numerical stability.
-> Since it uses the log-sum-exp trick to compute the loss in a more stable way.
-> -> $log(e^a + e^b) = max(a, b) + log(1 + e^{-|a-b|})$
+There are mayn different loss functions available.
+You can find them in the [Loss Functions](#32-loss-functions) section.
 
-#### More Loss Functions are following...
+### 2.5 Optimizer
 
-### 2.5 Optimizers
-
-Optimizer have theese main functions:
-
-- `optimizer.zero_grad()`: Clears old gradients from the last batch (otherwise they will accumulate)
-- `loss.backward()`: Computes the gradient of the loss w.r.t. the model parameters
-- `optimizer.step()`: Updates the model parameters based on the computed gradients
-
-PyTorch provides various optimization algorithms in the `torch.optim` module.
-
-#### 2.5.1 Stochastic Gradient Descent (SGD)
-
-Updates the parameters using the gradient of the loss function.
-
-We can add hyperparameters:
-
-- `lr`: Learning rate (step size for each update). -> Always required.
-- `momentum`: Accelerates SGD by adding a fraction of the previous update to the current update.
-- `weight_decay`: L2 regularization term to prevent overfitting. It adds a penalty proportional to the square of the magnitude of the parameters.
+We need to define an optimizer to update the model parameters based on the computed gradients.
 
 ```py
-optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-4)
+optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)  # Stochastic Gradient Descent
 ```
 
-!!! tip "good starting values"
-    - `lr`: 0.001 to 0.1
-    - `momentum`: 0.9
-    - `weight_decay`: 1e-4 to 1e-3
+Here as well, there are many different optimizers available.
+You can find them in the [Optimizers](#33-optimizers) section.
 
 ### 2.6 Training Loop
 
@@ -337,3 +286,206 @@ def evaluate_model(model, dataloader, device):
     accuracy = 100 * correct / total
     print(f'Accuracy: {accuracy:.2f}%')
 ```
+
+## 3. Elements of Neural Networks
+
+### 3.1 Activation Functions
+
+The activation functions introduce non-linearity into the neural network, allowing it to learn complex patterns. PyTorch provides several activation functions in the `torch.nn` module.
+
+#### 3.1.1 ReLU (Rectified Linear Unit) {#relu-activation}
+
+The ReLU activation function outputs the input directly if it is positive; otherwise, it outputs zero. It is widely used in hidden layers of neural networks due to its simplicity and effectiveness. <br />
+Based on that idea there were also developed a lot of variations, each with their own advantages and disadvantages. <br />
+Here are the most common ones:
+
+- **ReLU**: $f(x) = \max(0, x)$
+
+    ![ReLU Function](../assets/plots/out/relu_activation.svg){.center}
+
+    ```py
+    activation = nn.ReLU()
+    ```
+
+    >Use this as a default activation function in hidden layers.
+
+    <br />
+
+- **Leaky ReLU**: $f(x) = \max(0.01x, x)$
+
+    ![Leaky ReLU Function](../assets/plots/out/leaky_relu_activation.svg){.center}
+
+    ```py
+    activation = nn.LeakyReLU(negative_slope=0.01)
+    ```
+
+    >Use this when you want to avoid "dying ReLUs" (neurons that always output zero)
+    
+    <br />
+
+- **ELU (Exponential Linear Unit)**: $f(x) = x$ if $x > 0$ else $\alpha(e^{x} - 1)$
+
+    ![ELU Function](../assets/plots/out/elu_activation.svg){.center}
+
+    ```py
+    activation = nn.ELU(alpha=1.0)
+    ```
+
+    >Use this when you want smooth outputs for negative inputs.
+
+    <br />
+
+- **Swish**: $f(x) = x \cdot \sigma(x)$ where $\sigma(x)$ is the Sigmoid function.
+
+    ![Swish Function](../assets/plots/out/swish_activation.svg){.center}
+
+    ```py
+    activation = nn.SiLU()  # SiLU is another name for Swish
+    ```
+
+    >Use this when you want a smooth, non-monotonic activation function that can improve performance in some cases.
+
+    <br />
+
+!!! warning
+    ReLU and its variants can lead to **"dying ReLUs"** where neurons output zero for all inputs.
+    This can happen if a large gradient flows through a ReLU neuron, causing the weights to update in such a way that the neuron will always output zero.
+    To mitigate this, **consider using Swish** in very deep networks along with the ReLU variants.
+
+#### 3.1.2 Sigmoid
+
+The Sigmoid activation function maps input values to the **range (0, 1)**. It is commonly used in **binary classification** tasks. <br />
+However, it is less commonly used in hidden layers due to issues like vanishing gradients.
+
+Formula:
+$$
+\sigma(x) = \frac{1}{1 + e^{-x}}
+$$
+
+![Sigmoid Function](../assets/plots/out/sigmoid_activation.svg){.center}
+
+```py
+activation = nn.Sigmoid()
+```
+
+#### 3.1.3 Tanh (Hyperbolic Tangent)
+
+The Tanh activation function maps input values to the **range (-1, 1)**. <br />
+It is zero-centered, which can help with convergence in some cases.
+Use it in hidden layers when negative values are expected.
+
+Formula:
+$$
+\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}
+$$
+
+![Tanh Function](../assets/plots/out/tanh_activation.svg){.center}
+
+
+
+### 3.2 Loss Functions
+
+Loss functions measure **how wrong** a model’s predictions are compared to the true labels.
+They tell the optimizer *how much and in which direction to adjust the weights*.
+
+Conceptual Calculation of Loss over a batch:
+$$
+\text{Loss} = \frac{1}{N} \sum_{i=1}^{N} \text{error}(y_i, \hat{y}_i)
+$$
+
+where
+
+- $y_i$ = true value
+- $\hat{y}_i$ = predicted value
+- `error()` = some function that gets **larger when prediction is worse** (e.g. squared difference, log loss, etc.)
+- $N$ = number of samples in the batch
+
+The optimizer then tries to **minimize** this loss.
+
+PyTorch provides various loss functions in the `torch.nn` module.
+
+#### 3.2.1 Binary Cross Entropy Loss
+
+Used for binary classification tasks.
+So the model output should be in the range [0, 1] (use Sigmoid activation).
+
+```py
+criterion = nn.BCELoss()
+# or for logits (more stable)
+criterion = nn.BCEWithLogitsLoss()
+```
+
+> BCEWithLogitsLoss = Sigmoid + BCELoss
+> It is advised to **always prefer BCEWithLogitsLoss** over BCELoss for numerical stability.
+> Since it uses the log-sum-exp trick to compute the loss in a more stable way:
+> -> $log(e^a + e^b) = max(a, b) + log(1 + e^{-|a-b|})$
+
+#### More Loss Functions are following...
+
+### 3.3 Optimizers
+
+Optimizer have theese main functions:
+
+- `optimizer.zero_grad()`: Clears old gradients from the last batch (otherwise they will accumulate)
+- `loss.backward()`: Computes the gradient of the loss w.r.t. the model parameters
+- `optimizer.step()`: Updates the model parameters based on the computed gradients
+
+PyTorch provides various optimization algorithms in the `torch.optim` module.
+
+#### 3.3.1 Stochastic Gradient Descent (SGD)
+
+Updates the parameters using the gradient of the loss function.
+
+We can add hyperparameters:
+
+- `lr`: Learning rate (step size for each update). -> Always required.
+- `momentum`: Accelerates SGD by adding a fraction of the previous update to the current update.
+- `weight_decay`: L2 regularization term to prevent overfitting. It adds a penalty proportional to the square of the magnitude of the parameters.
+
+```py
+optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-4)
+```
+
+!!! tip "good starting values"
+    - `lr`: 0.001 to 0.1
+    - `momentum`: 0.9
+    - `weight_decay`: 1e-4 to 1e-3
+
+### 3.4 Initialization Strategies
+
+Weight initialization is crucial for training deep neural networks effectively. Proper initialization can help mitigate issues like vanishing or exploding gradients.
+
+Strategies you should avoid:
+
+- **Zero /Constant Initialization**: Initializing all weights to zero or a constant value can lead to symmetry breaking issues, where all neurons learn the same features.
+- **Large/Small Random Values**: Initializing weights with large or very small random values can lead to exploding or vanishing gradients, respectively.
+
+But these are **good strategies:**
+
+- **Xavier/Glorot Initialization**: Designed for layers with sigmoid or tanh activations. It sets the weights to values drawn from a distribution with zero mean and a specific variance based on the number of input and output neurons.
+- **He Initialization**: Specifically designed for layers with ReLU activations. It initializes weights from a distribution with zero mean and a variance of `2/n`, where `n` is the number of input neurons.
+- **Kaiming Initialization**: A generalization of He initialization that can be used for various activation functions. It adjusts the variance based on the activation function used in the layer.
+
+Quick reference table:
+
+| Activation                      | Init         | `torch.nn.init` call          |
+| ------------------------------- | ------------ | ----------------------------- |
+| **Sigmoid / Tanh**              | Xavier       | `nn.init.xavier_uniform_`     |
+| **ReLU / Leaky / Swish / GELU** | He / Kaiming | `nn.init.kaiming_uniform_`    |
+| **SELU**                        | LeCun        | manual `std = 1/sqrt(fan_in)` |
+| **Linear (no act)**             | Xavier       | `nn.init.xavier_uniform_`     |
+| **RNN / LSTM**                  | Orthogonal   | `nn.init.orthogonal_`         |
+
+!!! info
+    Usually you don't have to manually initialize weights, as PyTorch layers come with sensible default initializations. <br />
+    So you just instantiate the model:
+
+    ```py
+    model = SimpleNN()
+    ```
+
+    and PyTorch will take care of the initialization for you.
+    > for Linear layers it uses Kaiming Uniform by defaul since ReLU is the most common activation function and it also works well with others.
+
+You only need to manually initialize weights if you want to use a specific strategy or if you are implementing custom layers.
+

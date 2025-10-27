@@ -202,7 +202,7 @@ dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
 
 !!! info
     The most important parameters of `DataLoader` are:
-    
+
     - `batch_size`: Number of samples per batch.
     - `shuffle`: Whether to shuffle the data at every epoch. (use it for training set!)
     - `num_workers`: Number of subprocesses to use for data loading. (Use ~ number of CPU cores)
@@ -437,20 +437,72 @@ PyTorch provides various optimization algorithms in the `torch.optim` module.
 
 Updates the parameters using the gradient of the loss function.
 
+$$
+\theta = \theta - \eta \cdot \nabla_{\theta} J(\theta)
+$$
+
+- `θ`: model parameters
+- `η`: learning rate
+- `J(θ)`: loss function
+- `∇θ J(θ)`: gradient of the loss w.r.t. parameters
+
+```py
+optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-4)
+```
+
 We can add hyperparameters:
 
 - `lr`: Learning rate (step size for each update). -> Always required.
 - `momentum`: Accelerates SGD by adding a fraction of the previous update to the current update.
 - `weight_decay`: L2 regularization term to prevent overfitting. It adds a penalty proportional to the square of the magnitude of the parameters.
 
-```py
-optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-4)
-```
-
 !!! tip "good starting values"
     - `lr`: 0.001 to 0.1
     - `momentum`: 0.9
     - `weight_decay`: 1e-4 to 1e-3
+
+!!! info "momentum"
+    Momentum helps accelerate gradients vectors in the right directions, thus leading to faster converging.
+
+    $$
+    v = \beta \cdot m^{(t-1)} + (1 - \beta) \cdot g^{(t)}
+    $$
+
+    - `v`: velocity (update vector)
+    - `β`: momentum factor (usually close to 1, e.g., 0.9)
+    - `m^(t-1)`: previous update
+    - `g^(t)`: current gradient
+
+#### 3.3.2 Adam (Adaptive Moment Estimation)
+
+Adam combines the advantages of two other extensions of SGD: AdaGrad and RMSProp. It computes adaptive learning rates for each parameter.
+
+> In simple terms: Adam keeps track of both the average of **past gradients (first moment) and the average of past squared gradients** (second moment) to adaptively adjust the learning rate for each parameter.
+
+**General Tip:** Always prefer *AdamW over Adam* and SGD for better generalization performance.
+Since AdamW decouples weight decay from the gradient update, leading to better regularization.
+
+```py
+optimizer = optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01)
+
+# or AdamW (decoupled weight decay) -> preferred over Adam
+optimizer = optim.AdamW(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01)
+```
+
+We have the following hyperparameters:
+
+- `lr`: Learning rate. -> Always required.
+- `betas`: Coefficients used for computing running averages of gradient and its square.
+- `eps`: A small constant for numerical stability.
+- `weight_decay`: L2 regularization term to prevent overfitting.
+
+!!! tip "good starting values"
+    - `lr`: 0.001
+    - `betas`: (0.9, 0.999)
+    - `eps`: 1e-08
+    - `weight_decay`: 1e-4 to 1e-2
+
+
 
 ### 3.4 Initialization Strategies
 

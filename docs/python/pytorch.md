@@ -463,11 +463,9 @@ We can add hyperparameters:
 
 !!! info "momentum"
     Momentum helps accelerate gradients vectors in the right directions, thus leading to faster converging.
-
     $$
     v = \beta \cdot m^{(t-1)} + (1 - \beta) \cdot g^{(t)}
     $$
-
     - `v`: velocity (update vector)
     - `β`: momentum factor (usually close to 1, e.g., 0.9)
     - `m^(t-1)`: previous update

@@ -382,8 +382,6 @@ $$
 
 ![Tanh Function](../assets/plots/out/tanh_activation.svg){.center}
 
-
-
 ### 3.2 Loss Functions
 
 Loss functions measure **how wrong** a model’s predictions are compared to the true labels.
@@ -491,6 +489,7 @@ We have the following hyperparameters:
 
 - `lr`: Learning rate. -> Always required.
 - `betas`: Coefficients used for computing running averages of gradient and its square.
+    > How much the past gradients influence the current update.
 - `eps`: A small constant for numerical stability.
 - `weight_decay`: L2 regularization term to prevent overfitting.
 

@@ -302,7 +302,7 @@ Here are the most common ones:
 
 - **ReLU**: $f(x) = \max(0, x)$
 
-    ![ReLU Function](../assets/plots/out/relu_activation.svg){.center}
+    ![ReLU Function](../../assets/plots/out/relu_activation.svg){.center}
 
     ```py
     activation = nn.ReLU()
@@ -314,7 +314,7 @@ Here are the most common ones:
 
 - **Leaky ReLU**: $f(x) = \max(0.01x, x)$
 
-    ![Leaky ReLU Function](../assets/plots/out/leaky_relu_activation.svg){.center}
+    ![Leaky ReLU Function](../../assets/plots/out/leaky_relu_activation.svg){.center}
 
     ```py
     activation = nn.LeakyReLU(negative_slope=0.01)
@@ -326,7 +326,7 @@ Here are the most common ones:
 
 - **ELU (Exponential Linear Unit)**: $f(x) = x$ if $x > 0$ else $\alpha(e^{x} - 1)$
 
-    ![ELU Function](../assets/plots/out/elu_activation.svg){.center}
+    ![ELU Function](../../assets/plots/out/elu_activation.svg){.center}
 
     ```py
     activation = nn.ELU(alpha=1.0)
@@ -338,7 +338,7 @@ Here are the most common ones:
 
 - **Swish**: $f(x) = x \cdot \sigma(x)$ where $\sigma(x)$ is the Sigmoid function.
 
-    ![Swish Function](../assets/plots/out/swish_activation.svg){.center}
+    ![Swish Function](../../assets/plots/out/swish_activation.svg){.center}
 
     ```py
     activation = nn.SiLU()  # SiLU is another name for Swish
@@ -363,7 +363,7 @@ $$
 \sigma(x) = \frac{1}{1 + e^{-x}}
 $$
 
-![Sigmoid Function](../assets/plots/out/sigmoid_activation.svg){.center}
+![Sigmoid Function](../../assets/plots/out/sigmoid_activation.svg){.center}
 
 ```py
 activation = nn.Sigmoid()
@@ -380,7 +380,7 @@ $$
 \tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}
 $$
 
-![Tanh Function](../assets/plots/out/tanh_activation.svg){.center}
+![Tanh Function](../../assets/plots/out/tanh_activation.svg){.center}
 
 ### 3.2 Loss Functions
 

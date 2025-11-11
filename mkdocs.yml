@@ -52,6 +52,7 @@ markdown_extensions:
   - toc:
       permalink: true # adds a link icon to each heading in the TOC
   - pymdownx.blocks.details # enables <details> blocks
+  - pymdownx.details # adds collapsible details blocks
   - pymdownx.superfences # better code block handling
   - pymdownx.magiclink # auto-link URLs and emails
   - pymdownx.arithmatex:

@@ -284,6 +284,19 @@ if st.button('Increment Counter'):
 st.write(f"Counter value: {st.session_state.counter}")
 ```
 
+!!! info
+    When a widget is no longer rendered, its value is removed from `st.session_state`. To **retain the value**, you can:
+
+    - set a default value when initializing the session state variable:
+    ```python
+    if 'my_value' not in st.session_state:
+        st.session_state.my_value = default_value
+    ```
+    - pass a `value` parameter to the widget to set its initial value:
+    ```python
+    st.text_input("Enter text:", value=st.session_state.my_value)
+    ```
+
 ### 3.2 Callbacks
 
 Streamlit allows you to define callback functions that get executed when certain events occur, such as when a button is clicked or a form is submitted. Callbacks are useful to **fix issues** with the app rerunning from **top to bottom on every interaction**.
@@ -349,4 +362,110 @@ Streamlit provides various options for customizing the layout and styling of you
     
     with st.container(border=True):
         st.write("This is inside a container.")
+    ```
+
+## 5 Caching Data
+
+Streamlit provides a caching mechanism to optimize performance by storing the results of expensive computations.
+
+!!! info
+    This cashed data is persistent across app reruns AND accross different users of the app! So be careful what you cache!
+
+### 5.1 Using @st.cache_data
+
+You can use the `@st.cache_data` decorator to cache the output of functions that perform expensive computations or data loading.
+This cache is immutable and is intended for data that does not change frequently.
+
+```python
+@st.cache_data(ttl=60) # cache for 60 seconds
+def load_data(file_path):
+    # Simulate an expensive data loading operation
+    data = pd.read_csv(file_path)
+    return data
+
+data = load_data('large_dataset.csv')
+st.write(data)
+```
+
+### 5.2 Using @st.cache_resource
+
+If you need to cache mutable resources like database connections or machine learning models, you can use the `@st.cache_resource` decorator.
+
+```python
+@st.cache_resource
+def get_file_handler():
+    # Simulate an expensive resource creation
+    handler = open('large_file.txt', 'r')
+    return handler
+
+file_handler = get_file_handler()
+st.write(file_handler.read())
+```
+
+Here, the `get_file_handler` function creates a file handler that is cached and reused across app reruns. So everyone accessing the app will share the same file handler instance.
+
+## 6 Planned Reruns
+
+### 6.1 entire App Rerun
+
+You can use `st.rerun()` to programmatically trigger a rerun of the app.
+This can be usefule where you want to keep a output in sync with some source below it in the code like a counter of a button press:
+
+```python
+if 'count' not in st.session_state:
+    st.session_state.count = 0
+    
+st.write(f"Count value: {st.session_state.count}")
+
+if st.button('Increment Count'):
+    st.session_state.count += 1
+    st.rerun()
+```
+
+### 6.2 Fragment Rerun
+
+You define elements within a `@st.fragment()` decorator to only rerun that specific fragment of the app when a widget inside it is interacted with.
+
+If you interact with a widget outside the fragment, the entire app reruns as usual.
+
+```python
+@st.fragment
+def toggle_and_text():
+    st.toggle("Toggle me")
+    st.text_input("Enter some text:")
+
+toggle_and_text()
+st.button("Outside") # Reruns entire app
+```
+
+!!! note
+    You can't return values from fragments. If you need to share data between fragments and the main app, use [`st.session_state`](#31-using-session-state).
+
+## 7 Multi Page Apps
+
+Streamlit supports multi-page applications, allowing you to create apps with multiple pages or views.
+
+You can create **separate Python files for each page** and use Streamlit's built-in navigation features to switch between them.
+
+You have to create a folder named `pages` in the same directory as your main app file. Each Python file in the `pages` folder represents a separate page in your app.
+
+The naming convention for the page files is important. The file names should start with a number followed by an underscore and the page name, e.g., `1_home.py`, `2_about.py`, etc. (You can also add emojis to the file names for better visual representation in the sidebar.)
+
+Here's an example of how to structure a multi-page Streamlit app:
+
+```bash
+my_streamlit_app/
+├── main.py
+└── pages/
+    ├── 1_📈_charts.py
+    ├── 2_🌍_mapping.py
+    └── 3_📊_dataframe.py
+```
+
+!!! tip
+    you can **switch pages programmatically** using `st.switch_page("page_name")` where `page_name` is the name of the page file *without the number and underscore*, e.g., `charts`, `mapping`, etc.
+
+    ```python
+    if st.button("Go to Charts Page"):
+        st.switch_page("charts")
     ```

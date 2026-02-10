@@ -1,6 +1,10 @@
+---
+icon: simple/pytorch
+---
+
 # PyTorch
 
-![PyTorch Logo](../../assets/images/python/pytorch-logo.png){.center width="90%"}
+![PyTorch Logo](../../assets/images/python/pytorch-logo.png){ .center width="90%" }
 
 > PyTorch is an open-source machine learning library. It is widely used for applications such as computer vision and natural language processing, and is known for its flexibility and ease of use.
 
@@ -538,4 +542,3 @@ Quick reference table:
     > for Linear layers it uses Kaiming Uniform by defaul since ReLU is the most common activation function and it also works well with others.
 
 You only need to manually initialize weights if you want to use a specific strategy or if you are implementing custom layers.
-

@@ -4,7 +4,7 @@ tags:
     - writing guide
     - markdown
     - formating
-    - 
+
 icon: material/pencil-plus
 ---
 

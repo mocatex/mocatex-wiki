@@ -1,3 +1,12 @@
+---
+tags:
+    - zensical
+    - configuration
+    - setup
+
+icon: lucide/settings
+---
+
 # Zensical Configuration
 
 > Zensical uses a `zensical.toml` file to configure the backend. This file should be placed in the **root** of your project.

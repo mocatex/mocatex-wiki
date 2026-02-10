@@ -1,3 +1,13 @@
+---
+tags:
+    - getting started
+    - writing guide
+    - markdown
+    - formating
+    - 
+icon: material/pencil-plus
+---
+
 # Writing Guide
 
 ### TODO List:

@@ -44,11 +44,7 @@ You then can publish your site with GitHub Pages or any other static hosting pro
 
 My recommendation is to just follow the [documentation](https://zensical.org/docs/setup/basics/) on the Zensical website since most of the default and recommended configuration options are pretty solid!
 
-Take my base default configuration as a starting point and then tweak it to your needs:
-
-```toml
-add code later here!!!
-```
+Take my base [default configuration](#my-recommended-base-configuration) as a starting point and then tweak it to your needs.
 
 Yet, here I added the configurations options I actually consider tweaking for most projects:
 
@@ -189,7 +185,7 @@ You can set the *primary* and *accent* colors of your site. Either in the simple
 
 ### Navigation
 
-You can set a custom navigation for your site within the `zensical.toml` file. But I would recommend letting zensical generate the navigation for you based on your file structure. You can override things like the title of a page with a `title` field in the [frontmatter]() of your markdown files.
+You can set a custom navigation for your site within the `zensical.toml` file. But I would recommend letting zensical generate the navigation for you based on your file structure. You can override things like the title of a page with a `title` field in the [frontmatter](./writing-guide.md#metadata-frontmatter) of your markdown files.
 
 Now settings that are useful yet not needed for all projects:
 
@@ -211,3 +207,127 @@ link = "link-to-your-social-profile"
 name = "Name for accessibility"
 ```
 
+## My Recommended Base Configuration
+
+Here is a ready-to-use copy-paste base configuration for you to start with. You can just copy this into your `zensical.toml` file and then tweak it to your needs:
+
+```toml
+[project] # Metadata and general settings
+site_name = "mocatex Wiki"
+site_url = "https://mocatex.github.io/mocatex-wiki/"
+repo_url = "https://github.com/mocatex/mocatex-wiki"
+repo_name = "mocatex/mocatex-wiki"
+site_description = "Personal wiki for stuff I learn"
+site_author = "mocatex"
+copyright = "&copy; 2026 mocatex"
+docs_dir = "docs"
+dev_addr = "localhost:2020"
+
+extra_css = ["assets/styles/overrides.css"]
+
+extra_javascript = [
+    "https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js",
+    "javascripts/tablesort.js",
+]
+
+[project.theme]
+language = "en"
+
+# features of Zensical
+features = [
+    "navigation.instant",          # nav without page reloads
+    "navigation.instant.prefetch", # prefetch pages on hover
+    "navigation.instant.progress", # show progress bar on page load
+    "navigation.tracking",         # track user navigation in local storage
+    "navigation.tabs",             # top level dir are displayed as tabs in the header
+    "navigation.tabs.sticky",      # keep the tabs in the header sticky on scrollstead of expandables
+    "navigation.expand",           # expand all dirs per default in the sidebar
+    "navigation.path",             # add breadcrumbs to the top of the page
+    "navigation.prune",            # only visible nav items are rendered in DOM
+    "navigation.indexes",          # index.md files become the default page for a directory
+    "toc.follow",                  # toc is always visible
+    "navigation.top",              # add a "back to top" button on the bottom right of the page
+    "search.highlight",            # highlight search terms in the page
+    "navigation.footer",           # ad links to the next and previous page at the end of each page
+
+    "content.code.copy",     # add a copy button to code blocks
+    "content.code.select",   # add selection button to highlight hovered line
+    "content.code.annotate", # clickable popups for code annotations
+
+    "content.tabs.link", # linkable content tabs
+
+    "content.footnote.tooltips", # show footnotes tooltips
+
+]
+
+# Palette toggle for LIGHT mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "deep purple"
+accent = "deep purple"
+toggle.icon = "material/brightness-7"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for DARK mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "deep purple"
+accent = "deep purple"
+toggle.icon = "material/brightness-3"
+toggle.name = "Switch to light mode"
+
+[project.theme.icon]
+logo = "material/text-box-search-outline"
+
+# Admonition blocks
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+    { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+
+# Code blocks with syntax highlighting
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.snippets]
+
+# Content Tabs
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+[project.markdown_extensions.pymdownx.tabbed.slugify]
+object = "pymdownx.slugs.slugify"
+kwds = { case = "lower" }
+
+# Tables
+[project.markdown_extensions.tables]
+
+# Footnotes
+[project.markdown_extensions.footnotes]
+
+# Text Formatting
+[project.markdown_extensions.pymdownx.caret]
+[project.markdown_extensions.pymdownx.keys]
+[project.markdown_extensions.pymdownx.mark]
+[project.markdown_extensions.pymdownx.tilde]
+
+# Grid & Grid-Cards
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.md_in_html]
+
+# Emojis & Icons
+[project.markdown_extensions.pymdownx.emoji]
+
+# Images
+[project.markdown_extensions.pymdownx.blocks.caption]
+
+# Lists
+[project.markdown_extensions.def_list]
+[project.markdown_extensions.pymdownx.tasklist]
+custom_checkbox = true
+```

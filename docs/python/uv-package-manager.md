@@ -1,3 +1,10 @@
+---
+tags:
+  - python
+  - package manager
+  - uv
+---
+
 # uv package manager
 
 ![uv-logo](../assets/images/python/uv-logo.jpg)

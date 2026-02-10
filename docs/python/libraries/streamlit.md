@@ -6,6 +6,8 @@ tags:
     - web apps
     - data science
     - machine learning
+
+icon: simple/streamlit
 ---
 
 # Streamlit

@@ -78,6 +78,9 @@ You can create an admonition block by using the following syntax:
 
 Here are the available types:
 
+<div class="grid" markdown>
+
+
 !!! note "note"
 
 !!! abstract "abstract"
@@ -101,6 +104,8 @@ Here are the available types:
 !!! example "example"
 
 !!! quote "quote"
+
+</div>
 
 ## Code Blocks
 

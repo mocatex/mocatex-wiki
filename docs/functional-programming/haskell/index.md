@@ -1,3 +1,7 @@
+---
+icon: simple/haskell
+---
+
 # Haskell - Getting Started
 
 ![Haskell Logo](../assets/haskell-logo.avif){ .center }

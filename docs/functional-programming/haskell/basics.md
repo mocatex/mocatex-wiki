@@ -3,7 +3,7 @@ title: Basics
 icon: lucide/notebook-pen
 ---
 
-# Haskell - the basics
+# haskell - the Basics
 
 In the last chapter we set up our Haskell environment and saw how we can run Haskell code. In this chapter we will cover the basics of the Haskell language.
 
@@ -45,7 +45,7 @@ w = 10 `div` 3
 
 </div>
 
-> For why we use backticks for `mod` and `div` see the chapter on [infix vs prefix functions](../functions.md#infix-vs-prefix-functions).
+> For why we use backticks for `mod` and `div` see the chapter on [infix vs prefix functions](./functions.md#prefix-and-infix-functions).
 
 ## Booleans and Logic
 

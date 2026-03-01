@@ -45,7 +45,7 @@ w = 10 `div` 3
 
 </div>
 
-> For why we use backticks for `mod` and `div` see the chapter on [infix vs prefix functions](./functions.md#prefix-and-infix-functions).
+> For why we use backticks for `mod` and `div` see the chapter on [infix vs prefix functions](./02-functions.md#prefix-and-infix-functions).
 
 ## Booleans and Logic
 

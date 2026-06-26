@@ -4,7 +4,7 @@ icon: simple/haskell
 
 # Haskell - Getting Started
 
-![Haskell Logo](../assets/haskell-logo.avif){ .center }
+![Haskell Logo](./../assets/haskell-logo.avif){ .center }
 
 > Haskell is a **purely functional programming language** known for its strong static typing, lazy evaluation, and powerful type system. The principles are pretty close to mathematical functions, which makes it a very logical and stable language to work with.
 

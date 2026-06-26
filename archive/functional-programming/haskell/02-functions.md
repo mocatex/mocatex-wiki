@@ -5,8 +5,6 @@ icon: material/function-variant
 
 # haskell - Functions
 
-TODO: transform prefix to infix AND declare native infix functions
-
 ## Function Basics
 
 <div class="grid" markdown>

@@ -31,3 +31,47 @@ After installing it from [the official website](https://code.visualstudio.com/),
 - **Dependi**: shows outdated crates inline
 - **Error Lens**: shows errors inline
 
+## Project Setup
+
+We can create a new Rust project using Cargo, the Rust package manager and build system. To create a new project, run the following command in your terminal:
+
+```bash
+cargo new my_project_name
+```
+
+or if we are already in a directory and want to initialize it as a Rust project:
+
+```bash
+cargo init
+```
+
+This will create the following directory structure:
+
+```bash
+my_project_name/
+├── Cargo.toml
+├── .gitignore
+└── src/
+    └── main.rs
+```
+
+!!! tip "Exercises"
+    When you are learning Rust, you are probably going to have **many small exercises**. So we don't have to create a new project for each exercise, we can create a **`bin/` directory** in our `src/` directory and put each exercise in its own file. This way Rust allows **multiple `main()` functions** in the same project, as long as they are in different files.
+
+Then we can run each exercise using the following command:
+
+```bash
+cargo run --bin exercise_name
+```
+
+If we want to run the default `main.rs` file, we can simply run:
+
+```bash
+cargo run
+```
+
+This run is **unoptimized** and is meant for development. If we want to run an **optimized** version of our code, we can use the following command:
+
+```bash
+cargo run --release
+```

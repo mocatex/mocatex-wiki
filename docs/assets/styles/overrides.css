@@ -50,3 +50,8 @@ img.center {
 .md-typeset table:not([class]) :is(td, th) {
     padding: 0.4em 1.25em;
 }
+
+/* make code snippet background better visible (not code blocks) */
+.md-typeset code:not([class]) {
+    background-color: #2e263a;
+}

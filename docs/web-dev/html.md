@@ -1,4 +1,11 @@
+---
+title: "HTML - Basics"
+icon: simple/html5
+---
+
 # HTML - All You Need to Know
+
+![HTML Logo](./assets/html5-logo.avif){width=20% .center}
 
 ## 1. Introduction to HTML
 
@@ -60,7 +67,8 @@
 
 ## 3. Forms
 
-Forms allow user input and interaction.
+Forms allow user input and interaction. <br/>
+The `action` attribute specifies where to send the form data (so here it would be sent to the `/submit` endpoint), and the `method` attribute specifies how to send the data (GET or POST).
 
 ### Basic Structure
 
@@ -78,6 +86,8 @@ Forms allow user input and interaction.
 
 ### Key Elements - Forms
 
+<div class="grid" markdown>
+
 - `<input>` – versatile element with `type` attribute:
     - `text`, `password`, `email`, `number`, `date`, `checkbox`, `radio`, `file`, `submit`.
 - `<textarea>` – multiline input.
@@ -86,16 +96,47 @@ Forms allow user input and interaction.
 - `<fieldset>` & `<legend>` – group form controls.
 - Validation attributes: `required`, `min`, `max`, `pattern`.
 
-!!! tip
-    You can find more about forms in [my forms guide](./html-forms.md).
+```html
+<form action="/submit" method="post">
+  <fieldset>
+    <legend>Personal Info</legend>
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" required>
+    <label for="age">Age:</label>
+    <input id="age" name="age" type="number" min="0" max="120">
+  </fieldset>
+  <fieldset>
+    <legend>Preferences</legend>
+    <label for="color">Favorite Color:</label>
+    <select id="color" name="color">
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+    </select>
+    <label for="subscribe">Subscribe to newsletter:</label>
+    <input id="subscribe" name="subscribe" type="checkbox">
+  </fieldset>
+  <button type="submit">Submit</button>
+</form>
+```
+
+</div>
 
 ---
 
 ## 4. Tables
 
-Tables organize data in rows/columns.
+Tables organize data in rows/columns. Use tables **only for data** (not for layout).
 
-### Example
+<div class="grid" markdown>
+
+
+- `<table>` – container.
+- `<tr>` – table row.
+- `<td>` – table data cell.
+- `<th>` – header cell.
+- `<thead>`, `<tbody>`, `<tfoot>` – structure sections.
+- `<caption>` – table title.
 
 ```html
 <table>
@@ -119,16 +160,7 @@ Tables organize data in rows/columns.
 </table>
 ```
 
-### Key Elements - Tables
-
-- `<table>` – container.
-- `<tr>` – table row.
-- `<td>` – table data cell.
-- `<th>` – header cell.
-- `<thead>`, `<tbody>`, `<tfoot>` – structure sections.
-- `<caption>` – table title.
-
-Use tables **only for data** (not for layout).
+</div>
 
 ---
 

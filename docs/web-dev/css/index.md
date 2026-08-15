@@ -272,3 +272,68 @@ This is often more predictable than `em`, especially for nested elements.
     - Use `px` for precise control over element sizes.
     - Use `em` and `rem` for scalable typography and spacing.
     - Use `%`, `vw`, and `vh` for responsive layouts that adapt to different screen sizes.
+
+## CSS Remedy
+
+Since Browsers have their own default styles, it is a good practice to reset or normalize these styles to ensure consistency across different browsers.
+
+Here is a modern approach that doesn't reset but normalizes the styles:
+
+```css
+@layer reset {
+    /* Border-box: width/height include padding+border, not added on top. 
+    Applies to pseudo-elements too, since they inherit box authorship. */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    /* Kill body's default margin; browsers add ~8px you never want. 
+    min-height ensures full-viewport layouts work without extra wrappers.
+    svh (small viewport height) accounts for mobile browser UI chrome. */
+    body {
+        margin: 0;
+        min-height: 100svh;
+        line-height: 1.5; /* WCAG-recommended minimum for readability */
+        -webkit-font-smoothing: antialiased; /* fixes heavy-looking text on Mac/Chrome */
+    }
+
+    /* Media elements default to inline, leaving stray gaps beneath them.
+    max-width keeps them from overflowing their container. */
+    img, picture, video, canvas, svg {
+        display: block;
+        max-width: 100%;
+    }
+
+    /* Form controls don't inherit font by default — they use the OS UI font,
+    which looks inconsistent with the rest of your page. */
+    input, button, textarea, select {
+        font: inherit;
+    }
+
+    /* Prevents a long word forcing an ugly line break, 
+    or one orphan word dangling alone on a heading's last line. */
+    h1, h2, h3, h4, h5, h6 {
+        text-wrap: balance;
+    }
+    p, li {
+        text-wrap: pretty;
+    }
+
+    /* interpolate-size lets height animate to/from "auto" — no more JS hacks for expand/collapse.
+    Gated behind reduced-motion since it's animation-adjacent. */
+    @media (prefers-reduced-motion: no-preference) {
+        html { interpolate-size: allow-keywords; }
+    }
+
+    /* Respect the OS-level "reduce motion" accessibility setting 
+    by collapsing all animation/transition durations to near-zero. */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    }
+    }
+}
+```
+
+**Important:** DON'T use this when working with the Tailwind CSS framework, as it already has its own reset styles!

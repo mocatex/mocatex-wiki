@@ -1,3 +1,8 @@
+---
+title: "CSS - Basics"
+icon: simple/css
+---
+
 # CSS - The Basics
 
 ![CSS Logo](../../assets/images/web-dev/css-logo.png){width=20% .center}
@@ -48,7 +53,7 @@ selector {
 }
 ```
 
-You can find more indepth information about it in my [CSS Selectors Guide](./css-selectors.md).
+You can find more indepth information about it in my [CSS Selectors Guide](../CSS/css-selectors.md).
 
 ## Cascading and Specificity
 
@@ -65,46 +70,43 @@ Also, the order of the rules matters: later rules can override earlier ones if t
 
 CSS supports a set of named colors that can be used directly in your styles. Examples include:
 
-- `red`
-- `green`
-- `indigo`
-- ...
+`red`, `green`, `indigo`, ...
 
 most of the times, you will want to use more specific colors.
 
 ### RGB & RGBA Colors
 
-**RGB** (Red, Green, Blue) colors are defined using the `rgb()` function, which takes three values ranging from 0 to 255.
+<div class="grid" markdown>
+
+**RGB** (Red, Green, Blue) colors are defined using the `rgb()` function, which takes three values ranging from 0 to 255. <br>
+**RGBA** colors are similar to RGB but include an *alpha channel* for transparency, ranging from 0 (fully transparent) to 1 (fully opaque).
 
 ```css
 color: rgb(255, 0, 0); /* Red */
 color: rgb(0, 255, 0); /* Green */
 color: rgb(0, 0, 255); /* Blue */
 color: rgb(206, 51, 234) /* Purple */
-```
-
-**RGBA** colors are similar to RGB but include an *alpha channel* for transparency, ranging from 0 (fully transparent) to 1 (fully opaque).
-
-```css
 color: rgba(255, 0, 0, 0.5); /* Semi-transparent Red */
 ```
 
+</div>
+
 ### HEX & HEXA Colors
 
-HEX colors are represented as a six-digit hexadecimal number, prefixed with a `#`. Each pair of digits represents the intensity of red, green, and blue, respectively.
+<div class="grid" markdown>
+
+**HEX** colors are represented as a six-digit hexadecimal number, prefixed with a `#`. Each pair of digits represents the intensity of red, green, and blue, respectively. <br>
+**HEXA** colors are similar to HEX but include an additional two digits for the alpha channel (transparency).
 
 ```css
 color: #FF0000; /* Red */
 color: #00FF00; /* Green */
 color: #0000FF; /* Blue */
 color: #CE33EA; /* Purple */
-```
-
-**HEXA** colors are similar to HEX but include an additional two digits for the alpha channel (transparency).
-
-```css
 color: #FF000080; /* Semi-transparent Red */
 ```
+
+</div>
 
 !!! tip
     RGB(A) and HEX(A) are actually the same.

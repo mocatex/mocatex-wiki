@@ -66,6 +66,9 @@ div {
 }
 ```
 
+!!! info "margin auto"
+    The `margin: auto;` property can be used to center an element horizontally within its parent container. It works by automatically adjusting the left and right margins to take up the remaining space.
+
 ## Display Property
 
 > The `display` property specifies how an element is displayed and how it interacts with other elements in the document flow. It can take various values, each affecting the layout and behavior of the element differently.

@@ -53,7 +53,7 @@ selector {
 }
 ```
 
-You can find more indepth information about it in my [CSS Selectors Guide](../CSS/css-selectors.md).
+You can find more indepth information about it in my [CSS Selectors Guide](./01_css-selectors.md).
 
 ## Cascading and Specificity
 

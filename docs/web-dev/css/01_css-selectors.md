@@ -11,7 +11,7 @@ icon: lucide/square-dashed-mouse-pointer
 
 ```css title="Basic Structure"
 selector, optional-more-selectors {
-  property: value;
+    property: value;
 }
 ```
 
@@ -64,4 +64,3 @@ There is also the `!important` rule, which can be used to override normal specif
 
 !!! info "CSS Inheritance"
     CSS properties can be inherited by child elements from their parent elements. This means that if a parent element has a certain style applied, its children will also have that style unless explicitly overridden.
-

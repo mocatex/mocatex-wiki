@@ -55,3 +55,8 @@ img.center {
 .md-typeset code:not([class]) {
     background-color: #2e263a;
 }
+
+/* make admonition block text bigger */
+.md-typeset .admonition {
+    font-size: 0.75rem;
+}

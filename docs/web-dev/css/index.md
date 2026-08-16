@@ -127,6 +127,19 @@ color: #F39A;   /* Shorthand HEX with alpha */
     The shorthand HEX(A) Format only if each pair of digits are the same!
     Even if a single pair is different, you must use the full six/eight-digit format.
 
+### Color Gradients
+
+<div class="grid" markdown>
+
+`linear-gradient()` and `radial-gradient()` are functions that create smooth transitions between two or more colors. They can be used as background images for elements.
+
+```css
+background: linear-gradient(45deg, red, yellow);
+background: radial-gradient(circle, blue, green);
+```
+
+</div>
+
 ## Common Text Properties
 
 ### text-align

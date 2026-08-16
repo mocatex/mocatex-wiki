@@ -76,7 +76,7 @@ div {
 - **block**: The element is displayed as a block-level element, taking up the **full width available** and starting on a **new line**. Examples include `<div>`, `<p>`, and `<h1>`.
 - **inline**: The element is displayed as an inline-level element, taking up only **as much width as necessary** and not starting on a new line. Examples include `<span>`, `<a>`, and `<strong>`.
 - **inline-block**: The element is displayed as an inline-level element but **behaves like a block-level** element, allowing for setting width and height. Examples include `<img>` and `<button>`.
-- **flex**: The element is displayed as a flex container, allowing for flexible layouts and alignment of its child elements. Examples include `<div>` with `display: flex;`. Also see [Flexbox](../CSS/03_css-flexbox.md).
+- **flex**: The element is displayed as a flex container, allowing for flexible layouts and alignment of its child elements. Examples include `<div>` with `display: flex;`. Also see [Flexbox](./04_css-flexbox.md).
 - **grid**: The element is displayed as a grid container, allowing for two-dimensional layouts and alignment of its child elements. Examples include `<div>` with `display: grid;`.
 - **none**: The element is not displayed at all, and it does not take up any space in the document flow. Examples include `<script>` and `<style>`.
 

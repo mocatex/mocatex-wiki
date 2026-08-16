@@ -21,24 +21,35 @@ The `position` property allows us to control the positioning of an element in re
 - `fixed`: The element is positioned relative to the viewport, which means it stays in the same position even when the page is scrolled.
 - `sticky`: The element is positioned based on the user's scroll position. It toggles between `relative` and `fixed`, depending on the scroll position. It is treated as `relative` until it crosses a specified threshold, at which point it becomes `fixed`. This is useful for creating sticky headers or elements that remain visible while scrolling.
 
-## Z-Index
+## Grid System
 
-The `z-index` property controls the stacking order of elements that overlap. Elements with a higher `z-index` value will appear in front of elements with a lower value. It only works on positioned elements (those with a `position` value other than `static`).
-
-## Box-Shadow
-
-<div class="grid" markdown>
-
-The `box-shadow` property allows us to add shadow effects to an element. Can also be used to create a "glow" effect by using a spread radius and a color with some transparency.
+CSS Grid is a two-dimensional layout system (handling both rows and columns) that compared to [Flexbox](./04_css-flexbox.md) is more focused on the overall layout of a page. You set it up with the `display: grid;` property and then define the rows and columns using `grid-template-rows` and `grid-template-columns`. You can also use `grid-gap` to set the spacing between grid items.
 
 ```css
-div {
-    /* offset-x offset-y blur-radius spread-radius color */
-    box-shadow: 10px 10px 5px 0px red;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 3 columns with different widths */
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-template-rows: auto; /* rows will adjust to content */
+    grid-gap: 10px; /* spacing between grid items */
+}
+.item {
+    grid-column: 1 / 3; /* span across 2 columns  (Starts at line 1, ends at line 3 -> | | |*/
+    grid-column: span 2; /* span across 2 columns from its current position */
+    grid-row: 1; /* place in the first row */
 }
 ```
 
-</div>
+!!! tip "no-media-query Responsiveness"
+    CSS Grid allows us to create responsive layouts without the need for media queries. By using `fr` units and `auto-fit` or `auto-fill`, we can create flexible grid layouts that adapt to different screen sizes.
+
+    ```css
+    .container {
+        display: grid;
+        /* columns auto-fill with a minimum width of 200px and maximum of 1fr */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    ```
 
 ## Transitions
 
@@ -113,6 +124,25 @@ div {
     backdrop-filter: blur(5px);
     backdrop-filter: brightness(0.5);
     backdrop-filter: contrast(2);
+}
+```
+
+</div>
+
+## Z-Index
+
+The `z-index` property controls the stacking order of elements that overlap. Elements with a higher `z-index` value will appear in front of elements with a lower value. It only works on positioned elements (those with a `position` value other than `static`).
+
+## Box-Shadow
+
+<div class="grid" markdown>
+
+The `box-shadow` property allows us to add shadow effects to an element. Can also be used to create a "glow" effect by using a spread radius and a color with some transparency.
+
+```css
+div {
+    /* offset-x offset-y blur-radius spread-radius color */
+    box-shadow: 10px 10px 5px 0px red;
 }
 ```
 

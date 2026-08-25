@@ -290,7 +290,7 @@ This is often more predictable than `em`, especially for nested elements.
 
 Since Browsers have their own default styles, it is a good practice to reset or normalize these styles to ensure consistency across different browsers.
 
-Here is a modern approach that doesn't reset but normalizes the styles:
+Here is a modern approach that doesn't reset but normalizes the styles (if you need a CSS reset instead, check out [CSS Reset](https://meyerweb.com/eric/tools/css/reset/)):
 
 ```css
 @layer reset {

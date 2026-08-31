@@ -79,4 +79,3 @@ div {
 - **flex**: The element is displayed as a flex container, allowing for flexible layouts and alignment of its child elements. Examples include `<div>` with `display: flex;`. Also see [Flexbox](./04_css-flexbox.md).
 - **grid**: The element is displayed as a grid container, allowing for two-dimensional layouts and alignment of its child elements. Examples include `<div>` with `display: grid;`.
 - **none**: The element is not displayed at all, and it does not take up any space in the document flow. Examples include `<script>` and `<style>`.
-

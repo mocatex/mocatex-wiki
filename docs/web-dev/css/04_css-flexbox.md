@@ -141,3 +141,34 @@ The most used options are `min-width` and `max-width`, which allow us to target 
 
 Another common (but slightly less used) option is `orientation`, which allows us to target devices based on their orientation (portrait or landscape).
 
+## Container Queries
+
+While media queries are based on the viewport size, container queries respond to the size of their **parent container**.
+
+<div class="grid" markdown>
+
+For this to work, the parent container must have the `container-type` property! Set it to `inline-size` (most common) or `size` (both width and height). Then you can use `@container` to define styles based on the container's size. <br><br>
+The container does not need a name in most cases. But if you want to target a "grandparent" container, you can give it a name using `container-name` and then use that name: `@container my-container (min-width: 400px) { ... }`.
+
+```css
+/* Parent container */
+.parent {
+    container-type: inline-size;
+}
+
+/* Default styles for child elements */
+.child {
+    background-color: lightblue;
+    padding: 1rem;
+}
+
+/* Styles for child elements when the parent container is at least 400px wide */
+@container (min-width: 400px) {
+    .child {
+        background-color: lightgreen;
+        padding: 2rem;
+    }
+}
+```
+
+</div>

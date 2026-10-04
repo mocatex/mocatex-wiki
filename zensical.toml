@@ -18,6 +18,7 @@ extra_javascript = [
 
 [project.theme]
 language = "en"
+custom_dir = "overrides"
 
 # features of Zensical
 features = [
@@ -37,7 +38,6 @@ features = [
     "navigation.footer",           # ad links to the next and previous page at the end of each page
 
     "content.code.copy",     # add a copy button to code blocks
-    "content.code.select",   # add selection button to highlight hovered line
     "content.code.annotate", # clickable popups for code annotations
 
     "content.tabs.link", # linkable content tabs
@@ -107,7 +107,8 @@ kwds = { case = "lower" }
 [project.markdown_extensions.md_in_html]
 
 # Emojis & Icons
-[project.markdown_extensions.pymdownx.emoji]
+[project.markdown_extensions]
+pymdownx.emoji.options.custom_icons = ["overrides/.icons"]
 
 # Images
 [project.markdown_extensions.pymdownx.blocks.caption]
